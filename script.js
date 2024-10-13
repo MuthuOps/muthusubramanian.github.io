@@ -2,24 +2,31 @@ let currentSlide = 0;
 const slides = document.querySelectorAll('.carousel-item');
 const dots = document.querySelectorAll('.dot');
 
+// Function to show the slide based on the index
 function showSlide(index) {
-    // Restrict the transform only to the carousel items
+    // Ensure the index wraps around
+    if (index >= slides.length) {
+        currentSlide = 0;
+    } else if (index < 0) {
+        currentSlide = slides.length - 1;
+    } else {
+        currentSlide = index;
+    }
+
+    // Move the slides by translating the carousel
     slides.forEach((slide, i) => {
-        slide.style.transform = `translateX(${(i - index) * 100}%)`;
+        slide.style.transform = `translateX(${(i - currentSlide) * 100}%)`;
     });
 
     // Update active dot
     dots.forEach(dot => dot.classList.remove('active'));
-    dots[index].classList.add('active');
-
-    currentSlide = index;
+    dots[currentSlide].classList.add('active');
 }
 
-// Auto slide (optional)
+// Auto slide every 5 seconds (optional)
 setInterval(() => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-}, 5000); // Change slide every 5 seconds
+    showSlide(currentSlide + 1);
+}, 5000);
 
 // Initialize the first slide
 showSlide(currentSlide);
