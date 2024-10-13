@@ -12,11 +12,28 @@
     </header>
     <section>
         <h2>Projects</h2>
-        <ul>
-            <li><a href="https://github.com/MuthuOps/MuthuOps/tree/DSA_JAVA">Project 1</a></li>
-            <li><a href="#">Project 2</a></li>
-            <li><a href="#">Project 3</a></li>
-        </ul>
+        <!-- Carousel container -->
+        <div class="carousel">
+            <div class="carousel-item active">
+                <a href="https://github.com/MuthuOps/MuthuOps/tree/DSA_JAVA" target="_blank">DSA - JAVA Preparation</a>
+            </div>
+            <div class="carousel-item">
+                <a href="" target="_blank">Project 2 - Project Description</a>
+            </div>
+            <div class="carousel-item">
+                <a href="" target="_blank">Project 3 - Project Description</a>
+            </div>
+            <!-- Add more projects similarly -->
+        </div>
+        <!-- Dots for navigation -->
+        <div class="dots">
+            <span class="dot active" onclick="showSlide(0)"></span>
+            <span class="dot" onclick="showSlide(1)"></span>
+            <span class="dot" onclick="showSlide(2)"></span>
+            <!-- Add more dots for each project -->
+        </div>
     </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
