@@ -1,10 +1,10 @@
 let currentSlide = 0;
 const slides = document.querySelectorAll('.carousel-item');
 const dots = document.querySelectorAll('.dot');
+const carousel = document.querySelector('.carousel');
 
 // Function to show the slide based on the index
 function showSlide(index) {
-    // Ensure the index wraps around
     if (index >= slides.length) {
         currentSlide = 0;
     } else if (index < 0) {
@@ -13,15 +13,18 @@ function showSlide(index) {
         currentSlide = index;
     }
 
-    // Move the slides by translating the carousel
     slides.forEach((slide, i) => {
         slide.style.transform = `translateX(${(i - currentSlide) * 100}%)`;
     });
 
-    // Update active dot
     dots.forEach(dot => dot.classList.remove('active'));
     dots[currentSlide].classList.add('active');
 }
+
+// Click event to slide to the next project
+carousel.addEventListener('click', () => {
+    showSlide(currentSlide + 1);
+});
 
 // Auto slide every 5 seconds (optional)
 setInterval(() => {
